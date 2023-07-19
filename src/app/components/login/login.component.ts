@@ -11,13 +11,13 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {}
-  error!: HttpResponse;
+  error!: HttpResponse | null;
   IsFetching!: boolean;
   user: LoginDto = { email: '', password: '', IsRememberMe: false };
 
   setTimeOut(timeOut: number = 2000): void {
     setTimeout(() => {
-      this.error == null;
+      this.error = null;
     }, timeOut);
   }
 
@@ -37,7 +37,7 @@ export class LoginComponent {
       error: (err) => {
         this.error = err.error.message;
         this.IsFetching = false;
-        this.setTimeOut(3000);
+        this.setTimeOut();
       },
     });
   }
