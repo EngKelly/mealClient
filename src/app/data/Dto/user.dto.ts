@@ -3,6 +3,8 @@ export interface UserDto {
 
   username: string;
 
+  profileURL: string;
+
   phone?: number;
 
   country: string;

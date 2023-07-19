@@ -16,6 +16,7 @@ export class SignUpComponent {
   user: SignUpDto = {
     email: '',
     username: '',
+    profileURL: '',
     country: '',
     password: '',
     roles: [],
