@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 mt-5 mb-5 card p-5 offset-3">
+            <h2 class="text-center mb-5">Meals Login Page</h2>
+            <form #ngForm (ngSubmit)="onSubmit()">
+                <input type="email" class="form-control mb-3" placeholder="example@gmail.com" name="email"
+                    [(ngModel)]="user.email" />
+                <div class="password_container">
+                    <input type="password" class="form-control mb-3" placeholder="Password" name="password"
+                        [(ngModel)]="user.password" />
+                </div>
+                <div class="password_container">
+                    <h5 *ngIf="IsFetching" class="errorOutput">Fetching User</h5>
+                    <h5 *ngIf="error?.message != null" class="errorOutput">
+                        {{error.message}}
+                    </h5>
+                </div>
+
+                <div class="button_container">
+                    <button type="submit" class="btn">
+                        Login
+                    </button>
+                </div>
+                <div class="reg">
+                    <p>Already Have An Account</p>
+                    <a class="reg_btn" routerLink="/sign-up">
+                        SignUp
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

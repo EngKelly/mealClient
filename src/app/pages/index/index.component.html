@@ -1,0 +1,251 @@
+<div class="home">
+    <div class="left">
+        <div class="home_desc">
+            <h2>Delicious meals at your convenience</h2>
+            <p>
+                Order meals from us and we will have it delivered at your
+                doorstep.
+            </p>
+        </div>
+        <div class="button">
+            <a class="get_started" routerLink="/Register">
+                Get Started
+            </a>
+        </div>
+
+        <meal-search-bar></meal-search-bar>
+    </div>
+
+    <div class="right">
+        <img src="../../../assets/images/riceandmeat.jpg" alt="Hero-meal" />
+    </div>
+
+    <div class="chat_button">
+        <!-- <BsChatRightDots class="icon" /> -->
+    </div>
+</div>
+
+
+<div *ngIf="IsMobile" class="searchFoodContainer">
+    <meal-search-bar></meal-search-bar>
+</div>
+<div class="food_menu">
+    <h1>MENU</h1>
+    <ul>
+        <div class="current_menu">
+            <li>Current menu</li>
+        </div>
+
+        <div class="menu_nav">
+            <a routerLink="/active-meals" class="active">
+                All
+            </a>
+            <a routerLink="/Rice">Rice</a>
+            <a routerLink="/beans">Beans</a>
+            <a routerLink="/fried">Fries</a>
+            <a routerLink="/swallow">Swallow</a>
+            <a routerLink="/orthers">Others</a>
+        </div>
+    </ul>
+
+    <div class="foods">
+        <div *ngFor="let product of products" class="food">
+            <div class="food_img">
+                <img [src]="product.img" [alt]="product.img">
+            </div>
+
+            <div class="food_description">
+                <h4> {{product.desc}} </h4>
+                <p> {{product.title}} </p>
+                <div class="cart">
+                    <h3>
+                        <i class="fa-solid fa-naira-sign"></i>
+                        <span> {{product.price}} </span>
+                    </h3>
+                    <div class="add_to_cart">
+                        <a [routerLink]="['/products/find', product._id]">
+                            <!-- <BsEye class="icon text-white viewProductDetails" /> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="full_menu">
+        <button type="button" class="full_menu_btn">
+            Full Menu
+        </button>
+    </div>
+</div>
+<div class="testmonials_bg">
+    <div class="testmonials">
+        <div class="left">
+            <div class="testmonials_desc">
+                <h2>What our customers say about us</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Incidunt blanditiis, veritatis necessitatibus aspernatur
+                    exercitationem tempora!
+                </p>
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="customer_profile">
+                <img src="../../../assets/images/kellyncodes.png" alt="testimonial-customer" />
+                <div class="profile_details">
+                    <h1>John Samson</h1>
+                    <p>ENUGU, NIGERIA</p>
+                </div>
+            </div>
+
+            <div class="what_customer_said">
+                <p>
+                    White dwarf a still more glorious dawn awaits tingling of rthe
+                    spine emerged into consciousness Vangells shores of the cosmic
+                    ocearn. Tendrils of gossamer clouds kinding the energy hidden in
+                    matter concept of the number on permanence.
+                </p>
+            </div>
+
+            <div class="dots">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+
+            <div class="about_icon">
+                <i class="bi bi-quote"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="blog_container">
+    <div class="blog_header">
+        <h1>Blog Our Latest News</h1>
+        <p>
+            Have you ever browsed food blogs like mine and wondered how to start
+            a food blog of your very own?
+        </p>
+    </div>
+
+    <div class="blogs">
+        <div class="blog">
+            <img src="../../../assets/images/img3.jpg" alt="meals_image" />
+
+            <div class="blog_description">
+                <p>
+                    <b>Design</b> 01 Octover 2019
+                </p>
+
+                <h4>Better Tha Takeout Kung Pan Chicken</h4>
+
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta
+                    illum at repellendus asperiores iusto.
+                </p>
+
+                <a routerLink="blog_readmore">READ MORE</a>
+            </div>
+        </div>
+
+        <div class="blog">
+            <img src="../../../assets//images/img2.jpg" alt="meals_image" />
+
+            <div class="blog_description">
+                <p>
+                    <b>Design</b> 01 Octover 2019
+                </p>
+
+                <h4>Better Tha Takeout Kung Pan Chicken</h4>
+
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta
+                    illum at repellendus asperiores iusto.
+                </p>
+
+                <a routerLink="blog_readmore">READ MORE</a>
+            </div>
+        </div>
+
+        <div class="blog">
+            <img src="../../../assets/images/img1.jpg" alt="food_blog_photo" />
+
+            <div class="blog_description">
+                <p>
+                    <b>Design</b> 01 October 2019
+                </p>
+
+                <h4>Better Tha Takeout Kung Pan Chicken</h4>
+
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta
+                    illum at repellendus asperiores iusto.
+                </p>
+
+                <a routerLink="blog_readmore">READ MORE</a>
+            </div>
+        </div>
+
+        <div class="blog">
+            <img src="../../../assets/images/banana.jpg" alt="banana" />
+
+            <div class="blog_description">
+                <p>
+                    <b>Design</b> 01 Octover 2019
+                </p>
+
+                <h4>Better Tha Takeout Kung Pan Chicken</h4>
+
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta
+                    illum at repellendus asperiores iusto.
+                </p>
+
+                <a routerLink="blog_readmore">READ MORE</a>
+            </div>
+        </div>
+
+        <div class="blog">
+            <img src="../../../assets/images/banana.jpg" alt="banana" />
+
+            <div class="blog_description">
+                <p>
+                    <b>Design</b> 01 Octover 2019
+                </p>
+
+                <h4>Better Tha Takeout Kung Pan Chicken</h4>
+
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta
+                    illum at repellendus asperiores iusto.
+                </p>
+
+                <a routerLink="blog_readmore">READ MORE</a>
+            </div>
+        </div>
+
+        <div class="blog">
+            <img src="../../../assets/images/banana.jpg" alt="banana" />
+
+            <div class="blog_description">
+                <p>
+                    <b>Design</b> 01 Octover 2019
+                </p>
+
+                <h4>Better Tha Takeout Kung Pan Chicken</h4>
+
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta
+                    illum at repellendus asperiores iusto.
+                </p>
+
+                <a routerLink="blog_readmore">READ MORE</a>
+            </div>
+        </div>
+    </div>
+</div>

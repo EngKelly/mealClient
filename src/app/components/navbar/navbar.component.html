@@ -1,0 +1,106 @@
+<div class="nav">
+    <nav>
+        <div class="logo">
+            <a routerLink="/" class="logo_text logoLink">
+                <div class="img">
+                    <img src="../../../assets/images/logo2.jpg" alt="logo" />
+                </div>
+                <h1 class="logo_text">Meals</h1>
+            </a>
+        </div>
+
+        <div [ngClass]="IsMobile && IsOpen ? 'navlinks' : 'navlinks navlinkClose'">
+            <ul>
+                <div *ngIf="user == null" class=" first_registration">
+                    <a routerLink="/login" class="login" (click)="toggle()">
+                        Login
+                    </a>
+                    <a routerLink="/sign-up" class="create_account" (click)="toggle()">
+                        Create Account
+                    </a>
+                </div>
+                <div *ngIf="user != null" class=" first_registration">
+                    <a [routerLink]="['user', user._id]" class="login" (click)="toggle()">
+                        {{user.username}}
+
+                    </a>
+                    <a [routerLink]="['user', user._id]" class="create_account" (click)="toggle()">
+                        Account
+                    </a>
+                </div>
+                <li>
+                    <!-- <BsFillHouseDoorFill class="icon i" /> -->
+                    <a routerLink="/" class="active" (click)="toggle()">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <!-- <BsBasket2 class="icon i" /> -->
+                    <a href="#menu">Menu</a>
+                </li>
+                <li>
+                    <!-- <BsCart3 class="icon i" /> -->
+                    <a href="#mytray">My Tray</a>
+                </li>
+                <li>
+                    <!-- <BsFillJournalBookmarkFill class="icon i" /> -->
+                    <a href="#mealplans">MealPlans</a>
+                </li>
+                <li> </li>
+            </ul>
+        </div>
+
+        <div class="search_nav">
+            <ul>
+                <ul class="icons">
+                    <li>
+                        <i>
+                            <!-- <BsSearch class="bi-search" /> -->
+                        </i>
+                    </li>
+                    <li>
+                        <a routerLink="/cart">
+                            <!-- <Badge badgeContent={cartQauntity} color="primary">
+                            <ShoppingCartIcon class="fa-cart" />
+                        </Badge> -->
+                        </a>
+                    </li>
+                </ul>
+
+                <div *ngIf="user == null" class="registration">
+                    <a routerLink="/login" class="login" (click)="toggle()">
+                        Login
+                    </a>
+                    <a routerLink="/sign-up" class=" create_account" (click)="toggle()">
+                        Create Account
+                    </a>
+                </div>
+                <div *ngIf="user != null" class=" registration">
+                    <a [routerLink]="['user', user._id]" class="login" (click)="toggle()">
+                        {{user.username}}
+
+                    </a>
+                    <a [routerLink]="['user', user._id]" class="create_account" (click)="toggle()">
+                        Account
+                    </a>
+                </div>
+            </ul>
+        </div>
+        <div class="harmburgar_menu">
+            <div class="cart">
+                <a routerLink="/cart">
+                    <i>
+                        <!-- <Badge badgeContent={cartQauntity}>
+                        <ShoppingCartIcon class="fa-cart" />
+                    </Badge> -->
+                    </i>
+                </a>
+            </div>
+            <div class="navbar_toggle" *ngIf="IsMobile" (click)="toggle()">
+                <h5 *ngIf="!IsOpen" style="color: black;">Open</h5>
+                <h5 *ngIf="IsOpen" style="color: black;">Close</h5>
+
+            </div>
+        </div>
+    </nav>
+</div>
