@@ -1,7 +1,7 @@
 import { UserService } from '../../services/user/user.service';
 import { Component, HostListener } from '@angular/core';
 import { JwtService } from '../../utils/jwt.service';
-import { UserDto } from '../../data/Dto/user.dto';
+import { UserDto } from '../../data/Dto/auth/user.dto';
 
 @Component({
   selector: 'meal-navbar',

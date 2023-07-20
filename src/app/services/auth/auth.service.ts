@@ -1,11 +1,11 @@
 import { localStorageToken } from './../../extension/local.storage';
 import { environment } from './../../../environment/environment';
 import { Inject, Injectable } from '@angular/core';
-import { HttpResponse } from '../../data/Dto/http.response';
-import { LoginDto } from '../../data/Dto/login.dto';
+import { HttpResponse } from '../../data/Dto/auth/http.response';
+import { LoginDto } from '../../data/Dto/auth/login.dto';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { SignUpDto } from '../../data/Dto/signup.dto';
+import { SignUpDto } from '../../data/Dto/auth/signup.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -32,11 +32,16 @@ export class AuthService {
     return this.http.post<HttpResponse<{ token: string }>>(url, model);
   }
 
-  saveUserSessionAsync(user: any): boolean {
+  saveUserSession(user: any): boolean {
     if (user == null) {
       return false;
     }
     this.localStorage.setItem('token', user.data.token);
+    return true;
+  }
+
+  logout(): boolean {
+    this.localStorage.removeItem('token');
     return true;
   }
 }

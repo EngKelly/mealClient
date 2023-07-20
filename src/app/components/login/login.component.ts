@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { HttpResponse } from '../../data/Dto/http.response';
-import { LoginDto } from '../../data/Dto/login.dto';
+import { HttpResponse } from '../../data/Dto/auth/http.response';
+import { LoginDto } from '../../data/Dto/auth/login.dto';
 import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
 
@@ -26,8 +26,7 @@ export class LoginComponent {
     this.authService.Login(this.user).subscribe({
       next: (response) => {
         if (response.data !== null) {
-          const IsSaved: boolean =
-            this.authService.saveUserSessionAsync(response);
+          const IsSaved: boolean = this.authService.saveUserSession(response);
           if (IsSaved) {
             this.IsFetching = false;
             this.router.navigateByUrl('');

@@ -1,7 +1,8 @@
+import { AuthService } from './../../services/auth/auth.service';
 import { UserService } from './../../services/user/user.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserDto } from '../../data/Dto/user.dto';
+import { UserDto } from '../../data/Dto/auth/user.dto';
 import { JwtService } from '../../utils/jwt.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class UserComponent {
   constructor(
     private router: Router,
     private userService: UserService,
-    private jwtService: JwtService
+    private jwtService: JwtService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -28,5 +30,12 @@ export class UserComponent {
         console.log('Error getting the current logged in user');
       },
     });
+  }
+
+  logout():void{
+    if(
+    this.authService.logout()
+
+    ){this.router.navigateByUrl('')}
   }
 }

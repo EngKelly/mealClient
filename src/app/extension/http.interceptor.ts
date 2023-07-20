@@ -11,8 +11,10 @@ import { localStorageToken } from './local.storage';
 
 @Injectable()
 export class JwtTokenInterceptor implements HttpInterceptor {
-  constructor(@Inject(localStorageToken) private localStorage: Storage) {}
-  token: string | null = this.localStorage.getItem('token');
+  token!: string | null;
+  constructor(@Inject(localStorageToken) private localStorage: Storage) {
+    this.token = this.localStorage.getItem('token');
+  }
   intercept(
     request: HttpRequest<unknown>,
     next: HttpHandler
@@ -20,6 +22,7 @@ export class JwtTokenInterceptor implements HttpInterceptor {
     request = request.clone({
       headers: new HttpHeaders({ Authorization: `Bearer ${this.token}` }),
     });
+    request.withCredentials;
     console.log(request);
     return next.handle(request);
   }

@@ -1,7 +1,7 @@
 import { AuthService } from './../../services/auth/auth.service';
-import { SignUpDto } from './../../data/Dto/signup.dto';
+import { SignUpDto } from '../../data/Dto/auth/signup.dto';
 import { Component } from '@angular/core';
-import { HttpResponse } from '../../data/Dto/http.response';
+import { HttpResponse } from '../../data/Dto/auth/http.response';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,7 +19,7 @@ export class SignUpComponent {
     profileURL: '',
     country: '',
     password: '',
-    roles: [],
+    roles: ['user'],
   };
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -38,8 +38,7 @@ export class SignUpComponent {
     this.authService.signUp(this.user).subscribe({
       next: (response) => {
         if (response.data !== null) {
-          const IsSaved: boolean =
-            this.authService.saveUserSessionAsync(response);
+          const IsSaved: boolean = this.authService.saveUserSession(response);
           if (IsSaved) {
             this.IsFetching = false;
             this.router.navigateByUrl('');
