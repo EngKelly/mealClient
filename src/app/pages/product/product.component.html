@@ -1,1 +1,59 @@
-<p>product works!</p>
+<div class="productDetailsContainer" *ngIf="product != undefined">
+    <div class="productLeft">
+        <div class="productContainer card p-3">
+            <div class="productImg">
+                <img [src]="product.img" [alt]="product.title" />
+                <h5>{{product.title}}</h5>
+                <p>{{product.desc}}</p>
+            </div>
+            <div class="details">
+                <div class="cartQuantity">
+                    <div class="button">
+                        <button class="icon" (click)="handleQuantityIncreaseORDecrease('decrement')">
+                        </button>
+                    </div>
+                    <h4 class="card quantityPadding"> {{productQuantity}} </h4>
+                    <div class="button">
+                        <button class="icon" (click)=" handleQuantityIncreaseORDecrease('increment')">
+                        </button>
+                    </div>
+                </div>
+                <form action="" class="button" #ngForm (ngSubmit)="addItemToCart()">
+                    <input type="hidden" name="productId" [(ngModel)]="product._id" />
+                    <input type="hidden" name="productImage" [(ngModel)]="product.img" />
+                    />
+                    <input type="hidden" name="productPrice" [(ngModel)]="productPrice" />
+                    />
+                    <input type="hidden" name="productTitle" [(ngModel)]="product.title" />
+                    <input type="hidden" name="productDesc" [(ngModel)]="product.desc" />
+                    <button type="submit">
+                        <h2 class="icon">ADD TO CART</h2>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="productRight">
+        <div class="col-md-5">
+            <div class="card p-3 justify-content-center text-secondary">
+                <h5>
+                    <b>Name:</b> {{product.title}}
+                </h5>
+                <h5>
+                    <b>Price:</b> {{product.price}}
+                </h5>
+                <h5>
+                    <b>Quantity:</b> {{productQuantity}}
+                </h5>
+                <h5>
+                    <b>Total Amount:</b> {{totalAmountOfProduct}}
+                </h5>
+                <button (click)="checkFullPrice()">Check Full Price</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h4 class="suc" *ngIf="IsFetchingProduct"> Fetching Product...</h4>
+<h4 class="err" *ngIf="error != null"> {{error}} </h4>
+<h4 class="suc" *ngIf="message != null"> {{message}} </h4>

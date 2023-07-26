@@ -1,0 +1,58 @@
+<br>
+<br>
+<br>
+<div *ngIf="IsMobile" class="searchFoodContainer">
+    <meal-search-bar></meal-search-bar>
+</div>
+<div class="food_menu">
+    <h1>MENU</h1>
+    <ul>
+        <div class="current_menu">
+            <li>Current menu</li>
+        </div>
+
+        <div class="menu_nav">
+            <a (click)="getProducts()" class="active">
+                All
+            </a>
+            <a (click)="getProducts('rice', 1)">Rice</a>
+            <a (click)="getProducts('beans', 1)">Beans</a>
+            <a (click)="getProducts('fries', 1)">Fries</a>
+            <a (click)="getProducts('swallow', 2)"> Swallow</a>
+            <a (click)="getProducts()">Others</a>
+        </div>
+    </ul>
+
+    <div class="foods" *ngIf="products != null">
+        <div *ngFor="let product of products" class="food">
+            <div class="food_img">
+                <img [src]="product.img" [alt]="product.img">
+            </div>
+
+            <div class="food_description">
+                <h4> {{product.desc}} </h4>
+                <p> {{product.title}} </p>
+                <div class="cart">
+                    <h3>
+                        <i class="fa-solid fa-naira-sign"></i>
+                        <span> {{product.price}} </span>
+                    </h3>
+                    <div class="add_to_cart">
+                        <a [routerLink]="['/product/', product._id]">
+                            <!-- <BsEye class="icon text-white viewProductDetails" /> -->
+                            View
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="full_menu" *ngIf="products == null">
+        <a routerLink="/products" class="full_menu_btn">
+            No product found -> Go to Product page
+        </a>
+    </div>
+</div>
+<br>
+<br>
+<br>

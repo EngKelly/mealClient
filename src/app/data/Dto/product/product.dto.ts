@@ -15,5 +15,7 @@ export interface ProductDto {
 
   price: number;
 
+  quantity: number;
+
   InStock: boolean;
 }

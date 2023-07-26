@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { UserComponent } from './pages/user/user.component';
 import { UsersComponent } from './pages/users/users.component';
 import { JwtTokenInterceptor } from './extension/http.interceptor';
+import { ProductsComponent } from './pages/products/products.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { JwtTokenInterceptor } from './extension/http.interceptor';
     SearchBarComponent,
     UserComponent,
     UsersComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,

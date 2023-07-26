@@ -1,1 +1,28 @@
-<p>cart works!</p>
+<div className="food_menu">
+    <div className="foods">
+        <div className="food" *ngFor="let cart of cartItems">
+            <div className="food_img">
+                <img [src]="cart.product.img" [alt]="cart.product.title" />
+            </div>
+
+            <div className="food_description">
+                <h4>{{cart.product.title}}</h4>
+                <p> {{cart.product.desc}} </p>
+                <div className="cart">
+                    <h3>
+                        <i className="fa-solid fa-naira-sign"></i>
+                        <span>{{cart.product.price}} </span>
+                    </h3>
+                    <div className="add_to_cart">
+                        <button className="icon hover text-white" (click)="deleteCartItem(cart._id)"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<a className="get_started" [routerLink]="['/dashboard']" routerLinkActive="router-link-active">
+    AdminPage
+</a>
+
+<h4 *ngIf="error != null"> {{error}} </h4>

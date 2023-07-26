@@ -1,31 +1,29 @@
 import { ProductService } from './../../services/product/product.service';
-import { ProductDto } from './../../data/Dto/product/product.dto';
-import { UserDto } from '../../data/Dto/auth/user.dto';
-import { Component, HostListener } from '@angular/core';
-import { JwtService } from '../../utils/jwt.service';
-import { UserService } from '../../services/user/user.service';
+import { UserService } from './../../services/user/user.service';
 import { ActivatedRoute } from '@angular/router';
+import { JwtService } from './../../utils/jwt.service';
+import { UserDto } from '../../data/Dto/auth/user.dto';
+import { ProductDto } from './../../data/Dto/product/product.dto';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
-  selector: 'meal-index',
-  templateUrl: './index.component.html',
-  styleUrls: ['./index.component.css'],
+  selector: 'meal-products',
+  templateUrl: './products.component.html',
+  styleUrls: ['./products.component.css'],
 })
-export class IndexComponent {
+export class ProductsComponent {
+  userToken: any = this.jwtService.decodeJwtToken();
+  IsMobile!: boolean;
+  user!: UserDto | undefined;
+  products!: ProductDto[] | undefined;
+  productId!: string;
+
   constructor(
     private jwtService: JwtService,
     private userService: UserService,
     private activeRoute: ActivatedRoute,
     private productService: ProductService
   ) {}
-
-  userToken: any = this.jwtService.decodeJwtToken();
-  IsMobile!: boolean;
-  IsActive!: boolean;
-  user!: UserDto | undefined;
-  products!: ProductDto[] | undefined;
-  productId!: string;
-  IsFetching!: boolean;
 
   ngOnInit() {
     this.handleWindowResize();
@@ -38,7 +36,7 @@ export class IndexComponent {
         console.log('Error getting the current logged in user');
       },
     });
-    this.getProducts('', 1);
+    this.getProducts();
     console.log(this.products);
     this.productId = this.activeRoute.snapshot.params['id'];
   }
@@ -58,19 +56,12 @@ export class IndexComponent {
     }
   }
 
-  activeBtn(): void {
-    this.IsActive = !this.IsActive;
-  }
-
   getProducts(productCategory: string = '', page: number = 1): void {
-    this.IsFetching = true;
     this.productService.getProducts(productCategory, page).subscribe({
       next: (response) => {
         this.products = response.data;
-        this.IsFetching = false;
       },
       error: (err) => {
-        this.IsFetching = false;
         console.error('Error occured while fetching the user.', err.message);
       },
     });

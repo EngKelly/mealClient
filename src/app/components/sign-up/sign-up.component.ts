@@ -41,7 +41,7 @@ export class SignUpComponent {
           const IsSaved: boolean = this.authService.saveUserSession(response);
           if (IsSaved) {
             this.IsFetching = false;
-            this.router.navigateByUrl('');
+            window.location.assign('');
           }
         }
       },

@@ -8,8 +8,12 @@
             </p>
         </div>
         <div class="button">
-            <a class="get_started" routerLink="/Register">
+            <a class="get_started" *ngIf="user == null" routerLink="/sign-up">
                 Get Started
+            </a>
+
+            <a class="get_started" *ngIf="user != null" routerLink="/products">
+                Foods
             </a>
         </div>
 
@@ -37,21 +41,21 @@
         </div>
 
         <div class="menu_nav">
-            <a routerLink="/active-meals" class="active">
+            <a (click)="getProducts()" (click)="activeBtn()" [class.active]="IsActive">
                 All
             </a>
-            <a routerLink="/Rice">Rice</a>
-            <a routerLink="/beans">Beans</a>
-            <a routerLink="/fried">Fries</a>
-            <a routerLink="/swallow">Swallow</a>
-            <a routerLink="/orthers">Others</a>
+            <a (click)="getProducts('rice', 1)" (click)="activeBtn()" [class.active]="IsActive">Rice</a>
+            <a (click)="getProducts('beans', 1)" (click)="activeBtn()" [class.active]="IsActive">Beans</a>
+            <a (click)="getProducts('fries', 1)" (click)="activeBtn()" [class.active]="IsActive">Fries</a>
+            <a (click)="getProducts('swallow', 1)" (click)="activeBtn()" [class.active]="IsActive"> Swallow</a>
+            <a (click)="getProducts()" (click)="activeBtn()" [class.active]="IsActive">Others</a>
         </div>
     </ul>
 
-    <div class="foods">
+    <div class="foods" *ngIf="products != null && !IsFetching">
         <div *ngFor="let product of products" class="food">
             <div class="food_img">
-                <img [src]="product.img" [alt]="product.img">
+                <img [src]="product.img" [alt]="product.title">
             </div>
 
             <div class="food_description">
@@ -63,18 +67,31 @@
                         <span> {{product.price}} </span>
                     </h3>
                     <div class="add_to_cart">
-                        <a [routerLink]="['/products/find', product._id]">
+                        <a [routerLink]="['/product/', product._id]">
                             <!-- <BsEye class="icon text-white viewProductDetails" /> -->
+                            View
                         </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="full_menu">
-        <button type="button" class="full_menu_btn">
+    <div class="full_menu" *ngIf="products != null">
+        <a routerLink="/products" class="full_menu_btn">
             Full Menu
-        </button>
+        </a>
+    </div>
+
+    <div class="full_menu" *ngIf="IsFetching">
+        <h5 routerLink="/products" class="full_menu_btn">
+            Fetching Products...
+        </h5>
+    </div>
+
+    <div class="full_menu" *ngIf="products == null">
+        <a routerLink="/products" class="full_menu_btn">
+            No product found -> Go to Product page
+        </a>
     </div>
 </div>
 <div class="testmonials_bg">

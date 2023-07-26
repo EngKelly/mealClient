@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { HttpResponse } from '../../data/Dto/auth/http.response';
 import { LoginDto } from '../../data/Dto/auth/login.dto';
 import { AuthService } from '../../services/auth/auth.service';
-import { Router } from '@angular/router';
+import { NavigationStart, Router } from '@angular/router';
 
 @Component({
   selector: 'meal-login',
@@ -29,7 +29,7 @@ export class LoginComponent {
           const IsSaved: boolean = this.authService.saveUserSession(response);
           if (IsSaved) {
             this.IsFetching = false;
-            this.router.navigateByUrl('');
+            window.location.assign('');
           }
         }
       },
