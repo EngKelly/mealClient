@@ -14,6 +14,8 @@ import { Component, HostListener } from '@angular/core';
 export class ProductsComponent {
   userToken: any = this.jwtService.decodeJwtToken();
   IsMobile!: boolean;
+  IsFetching!: boolean;
+  IsActive!: boolean;
   user!: UserDto | undefined;
   products!: ProductDto[] | undefined;
   productId!: string;
@@ -37,8 +39,8 @@ export class ProductsComponent {
       },
     });
     this.getProducts();
-    console.log(this.products);
     this.productId = this.activeRoute.snapshot.params['id'];
+    this.activeBtn();
   }
 
   @HostListener('window:resize', ['$event'])
@@ -56,10 +58,16 @@ export class ProductsComponent {
     }
   }
 
+  activeBtn(): void {
+    this.IsActive = !this.IsActive;
+  }
+
   getProducts(productCategory: string = '', page: number = 1): void {
+    this.IsFetching = true;
     this.productService.getProducts(productCategory, page).subscribe({
       next: (response) => {
         this.products = response.data;
+        this.IsFetching = false;
       },
       error: (err) => {
         console.error('Error occured while fetching the user.', err.message);

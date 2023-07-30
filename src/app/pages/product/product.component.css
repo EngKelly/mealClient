@@ -56,16 +56,9 @@
 
 .details .cartQuantity .button {
   margin: 0 1.3rem;
-}
-
-.productRight {
-  flex: 1;
-}
-
-.productLeft .details .button {
   border: none;
   outline: none;
-  width: 3.3rem;
+  width: 3rem;
   height: 2.5rem;
   display: flex;
   align-items: center;
@@ -75,6 +68,52 @@
   border-radius: 6px;
   background-color: var(--primary_color);
   cursor: pointer;
+}
+
+.productRight {
+  flex: 1;
+}
+
+.productLeft .details form,
+form button {
+  border: none;
+  outline: none;
+  width: 6rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  border-radius: 6px;
+  background-color: var(--primary_color);
+  cursor: pointer;
+}
+
+form .add-to-cart {
+  width: 100%;
+  height: 95%;
+  fill: var(--white_color);
+}
+
+.productLeft .details .button .plus-cart-item {
+  height: 100%;
+  width: 100%;
+  fill: var(--white_color);
+  text-align: center;
+  font-size: 0.5rem;
+}
+
+.productLeft .details .button .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  background-color: var(--primary_color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 10px;
 }
 
 .cartQuantity .quantityPadding {

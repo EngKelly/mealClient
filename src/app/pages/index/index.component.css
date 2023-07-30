@@ -1,0 +1,461 @@
+/* <===================home=====================> */
+
+.home {
+  position: relative;
+  width: var(--container_width_lg);
+  margin: auto;
+  height: 110vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 2rem;
+}
+
+.home .left {
+  position: relative;
+  width: 48%;
+  height: 100%;
+  display: flex;
+  align-items: left;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.home .home_desc {
+  height: fit-content;
+  width: 85%;
+  display: flex;
+  align-items: left;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.home .left h2 {
+  font-size: 3rem;
+  text-align: left;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.home .left p {
+  font-size: 0.9rem;
+  font-weight: 300;
+  width: 60%;
+  line-height: 1.5rem;
+}
+
+.home .button {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  width: 50%;
+  height: fit-content;
+  margin-top: 2rem;
+}
+
+.home .button .get_started {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary_color);
+  background-color: var(--primary_color);
+  height: 3rem;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  text-decoration: none;
+  border: none;
+  outline: none;
+}
+
+.home .button .get_started:hover {
+  border: 2px solid var(--primary_color);
+  background-color: var(--white_color);
+  color: var(--primary_color);
+}
+
+.home .right {
+  width: 48%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home .right img {
+  width: 31rem;
+  height: 31rem;
+  object-fit: cover;
+}
+
+.home .chat_button {
+  position: absolute;
+  right: 3%;
+  bottom: 0%;
+  width: 4.5rem;
+  height: 4.5rem;
+  color: var(--white_color);
+  border-radius: 50%;
+  background-color: var(--primary_color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.home .chat_button i {
+  font-size: 2rem;
+}
+
+/* ============================Food section ================================== */
+@import url("../products/products.component.css");
+/* ==================.testimonials section ====================== */
+.testimonials_bg {
+  position: relative;
+  background: rgba(218, 55, 67, 0.15);
+  width: 100%;
+  height: 100vh;
+  margin-top: 2rem;
+}
+
+.testimonials {
+  width: var(--container_width_lg);
+  margin: auto;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 2rem;
+}
+
+.testimonials .left {
+  width: 35%;
+  height: 100%;
+  display: flex;
+  align-items: left;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.testimonials .testimonials_desc {
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  align-items: left;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.testimonials .left h2 {
+  font-size: 3rem;
+  text-align: left;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.testimonials .left p {
+  font-size: 0.9rem;
+  font-weight: 300;
+  width: 60%;
+  line-height: 1.5rem;
+}
+
+.testimonials .right {
+  position: relative;
+  width: 58%;
+  height: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--white_color);
+  padding: 4rem;
+  border-radius: 7px;
+  gap: 3rem;
+}
+
+.testimonials .right .customer_profile {
+  width: 15rem;
+  height: 95%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  line-height: 2.5rem;
+}
+
+.testimonials .right .customer_profile img {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: var(--box-shadow);
+}
+
+.testimonials .right .about_icon {
+  position: absolute;
+  top: 6%;
+  right: 2%;
+  color: var(--primary_color);
+}
+
+@media screen and (max-width: 1100px) {
+  /* ============home=================== */
+  .home .left {
+    width: 47%;
+  }
+  .home .left .home_desc {
+    width: 100%;
+  }
+
+  /* ================food menu============= */
+  .food_menu ul .menu_nav {
+    width: 25rem;
+  }
+
+  /* =================testimonials=================== */
+  .testimonials .right {
+    height: 70%;
+    padding: 0.5rem;
+  }
+
+  .testimonials_bg::after {
+    right: 30%;
+    left: unset;
+  }
+
+  .testimonials .left h2 {
+    font-size: 2rem;
+  }
+
+  .testimonials .customer_profile .profile_details h2 {
+    font-size: 1rem;
+  }
+}
+
+/* ===========================MEDIA RESPONSIVE FOR MOBILE============== */
+
+@media screen and (max-width: 600px) {
+  /* ============================home====================== */
+
+  .home {
+    background-image: linear-gradient(
+      to bottom,
+      var(--primary_color),
+      var(--primary_color)
+    );
+    color: var(--white_color);
+    height: fit-content;
+    gap: 0;
+    padding: 3rem 0;
+  }
+
+  .home .left {
+    width: 100%;
+    padding-left: 1rem;
+  }
+
+  .home .left .home_desc h2 {
+    font-size: 1.5rem;
+  }
+  .home .left p {
+    width: 100%;
+    font-size: 0.8rem;
+  }
+
+  .home .right {
+    width: 100%;
+    height: 15rem;
+  }
+
+  .home .right img {
+    width: 14rem;
+    height: 14rem;
+  }
+
+  .home .button {
+    display: none;
+  }
+
+  .home .chat_button {
+    right: 3%;
+    bottom: -11%;
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .home .chat_button i {
+    font-size: 1rem;
+  }
+
+  /* ====================food Menu=================== */
+  .food_menu {
+    margin: 2rem 0;
+    padding: 0.2rem;
+    gap: 0.3rem;
+  }
+
+  .food_menu h1 {
+    margin-bottom: 1rem;
+  }
+
+  .food_menu .foods {
+    padding: 0.2rem;
+    column-gap: 0.3rem;
+    row-gap: 3rem;
+  }
+  .food_menu .foods .food {
+    margin-bottom: 3rem;
+  }
+
+  .foods .food .food_img {
+    height: 48%;
+  }
+
+  .food_menu ul {
+    width: 100%;
+    height: fit-content;
+    gap: 1rem;
+  }
+
+  .food_menu .foods .food {
+    width: 48%;
+    height: 21rem;
+  }
+
+  .food_menu ul .menu_nav a {
+    font-size: 0.6rem;
+    padding: 0.2rem;
+    height: 2rem;
+    width: 2.8rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .foods .food .food_description {
+    width: 100%;
+    height: 50%;
+    padding: 0.3rem;
+  }
+
+  .foods .food .food_description .cart {
+    width: 100%;
+    padding: 0;
+  }
+  .foods .food .food_description .cart h3 {
+    font-size: 0.95rem;
+  }
+
+  /* ==================testimonials responsice==================== */
+  .testimonials_bg {
+    height: fit-content;
+    margin-bottom: 2.3rem;
+  }
+
+  .testimonials {
+    width: var(--container_width_sm);
+    height: fit-content;
+    padding: 0;
+    align-items: left;
+  }
+
+  .testimonials .left {
+    width: 80%;
+    margin: 0;
+    margin-top: 1.4rem;
+  }
+
+  .testimonials .left h2 {
+    font-size: 1.5rem;
+  }
+
+  .testimonials .left p {
+    width: 100%;
+  }
+
+  .testimonials .right {
+    position: relative;
+    width: 88%;
+    height: 17rem;
+    flex-direction: column;
+    padding: 0.4rem;
+    gap: 1rem;
+    margin-bottom: 4rem;
+    justify-content: space-around;
+  }
+
+  .testimonials .right .what_customer_said {
+    height: 48%;
+    width: 100%;
+  }
+  .testimonials .right .what_customer_said p {
+    font-size: 0.89rem;
+  }
+
+  .testimonials .right .dots {
+    position: absolute;
+    bottom: -15%;
+    left: 26%;
+    width: 50%;
+    height: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .testimonials .right .dot {
+    /* Active */
+    width: 8px;
+    height: 8px;
+    left: calc(50% - 8px / 2 - 35.5px);
+    top: calc(50% - 8px / 2);
+    background: #ffffff;
+  }
+
+  .testimonials .right .dot.active {
+    /* Active */
+    width: 8px;
+    height: 8px;
+    left: calc(50% - 8px / 2 - 35.5px);
+    top: calc(50% - 8px / 2);
+    background: #da3743;
+  }
+
+  .testimonials .right .customer_profile {
+    width: 100%;
+    height: 46%;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .testimonials .right .customer_profile img {
+    width: 7rem;
+    height: 7rem;
+  }
+
+  .testimonials .right .customer_profile .profile_details {
+    width: 10rem;
+    height: fit-content;
+  }
+
+  .testimonials .right .customer_profile .profile_details p {
+    font-size: 0.8rem;
+  }
+
+  .testimonials .right .customer_profile .profile_details h1 {
+    font-size: 1rem;
+  }
+
+  .testimonials .right .about_icon {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+  }
+}

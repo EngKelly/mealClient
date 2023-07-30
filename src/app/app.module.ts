@@ -17,6 +17,9 @@ import { UserComponent } from './pages/user/user.component';
 import { UsersComponent } from './pages/users/users.component';
 import { JwtTokenInterceptor } from './extension/http.interceptor';
 import { ProductsComponent } from './pages/products/products.component';
+import { BlogComponent } from './pages/blog/blog.component';
+import { BlogDetailComponent } from './blog-detail/blog-detail.component';
+import { TruncatePipe } from './pipes/truncate-string';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,9 @@ import { ProductsComponent } from './pages/products/products.component';
     UserComponent,
     UsersComponent,
     ProductsComponent,
+    BlogComponent,
+    BlogDetailComponent,
+    TruncatePipe,
   ],
   imports: [
     BrowserModule,

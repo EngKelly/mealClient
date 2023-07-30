@@ -39,8 +39,8 @@ export class IndexComponent {
       },
     });
     this.getProducts('', 1);
-    console.log(this.products);
     this.productId = this.activeRoute.snapshot.params['id'];
+    this.activeBtn();
   }
 
   @HostListener('window:resize', ['$event'])
@@ -56,6 +56,8 @@ export class IndexComponent {
     } else {
       this.IsMobile = true;
     }
+    console.log(windowWidth);
+    console.log(this.IsMobile);
   }
 
   activeBtn(): void {
@@ -71,7 +73,7 @@ export class IndexComponent {
       },
       error: (err) => {
         this.IsFetching = false;
-        console.error('Error occured while fetching the user.', err.message);
+        console.error('Error occurred while fetching the user.', err.message);
       },
     });
   }

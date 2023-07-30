@@ -21,11 +21,15 @@
     </div>
 
     <div class="right">
-        <img src="../../../assets/images/riceandmeat.jpg" alt="Hero-meal" />
+        <img src="../../../assets/images/header_meal.png" alt="Hero-meal" />
     </div>
 
     <div class="chat_button">
-        <!-- <BsChatRightDots class="icon" /> -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M27.234 3.40426C27.234 1.52414 25.7099 0 23.8298 0H3.40426C1.52414 0 0 1.52414 0 3.40426V17.0213C0 18.9014 1.52414 20.4255 3.40426 20.4255H19.7205C20.1719 20.4255 20.6049 20.6049 20.9241 20.9241L25.7812 25.7812C26.3173 26.3173 27.234 25.9376 27.234 25.1794V3.40426ZM8.51064 10.2128C8.51064 11.1528 7.74857 11.9149 6.80851 11.9149C5.86845 11.9149 5.10638 11.1528 5.10638 10.2128C5.10638 9.27271 5.86845 8.51064 6.80851 8.51064C7.74857 8.51064 8.51064 9.27271 8.51064 10.2128ZM15.3191 10.2128C15.3191 11.1528 14.5571 11.9149 13.617 11.9149C12.677 11.9149 11.9149 11.1528 11.9149 10.2128C11.9149 9.27271 12.677 8.51064 13.617 8.51064C14.5571 8.51064 15.3191 9.27271 15.3191 10.2128ZM20.4255 11.9149C21.3656 11.9149 22.1277 11.1528 22.1277 10.2128C22.1277 9.27271 21.3656 8.51064 20.4255 8.51064C19.4855 8.51064 18.7234 9.27271 18.7234 10.2128C18.7234 11.1528 19.4855 11.9149 20.4255 11.9149Z"
+                fill="white" />
+        </svg>
     </div>
 </div>
 
@@ -44,11 +48,11 @@
             <a (click)="getProducts()" (click)="activeBtn()" [class.active]="IsActive">
                 All
             </a>
-            <a (click)="getProducts('rice', 1)" (click)="activeBtn()" [class.active]="IsActive">Rice</a>
-            <a (click)="getProducts('beans', 1)" (click)="activeBtn()" [class.active]="IsActive">Beans</a>
-            <a (click)="getProducts('fries', 1)" (click)="activeBtn()" [class.active]="IsActive">Fries</a>
-            <a (click)="getProducts('swallow', 1)" (click)="activeBtn()" [class.active]="IsActive"> Swallow</a>
-            <a (click)="getProducts()" (click)="activeBtn()" [class.active]="IsActive">Others</a>
+            <a (click)="getProducts('rice', 1)">Rice</a>
+            <a (click)="getProducts('beans', 1)">Beans</a>
+            <a (click)="getProducts('fries', 1)">Fries</a>
+            <a (click)="getProducts('swallow', 1)"> Swallow</a>
+            <a (click)="getProducts()" (click)="activeBtn()">Others</a>
         </div>
     </ul>
 
@@ -67,9 +71,11 @@
                         <span> {{product.price}} </span>
                     </h3>
                     <div class="add_to_cart">
-                        <a [routerLink]="['/product/', product._id]">
-                            <!-- <BsEye class="icon text-white viewProductDetails" /> -->
-                            View
+                        <a class="viewProductDetails" [routerLink]="['/product/', product._id]">
+                            <svg class="eye-icon" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+                                <path
+                                    d="M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.6 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.6-108.3C406.8 109.6 353.2 80 288 80zM95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1c3.3 7.9 3.3 16.7 0 24.6c-14.9 35.7-46.2 87.7-93 131.1C433.5 443.2 368.8 480 288 480s-145.5-36.8-192.6-80.6C48.6 356 17.3 304 2.5 268.3c-3.3-7.9-3.3-16.7 0-24.6C17.3 208 48.6 156 95.4 112.6zM288 336c44.2 0 80-35.8 80-80s-35.8-80-80-80c-.7 0-1.3 0-2 0c1.3 5.1 2 10.5 2 16c0 35.3-28.7 64-64 64c-5.5 0-10.9-.7-16-2c0 .7 0 1.3 0 2c0 44.2 35.8 80 80 80zm0-208a128 128 0 1 1 0 256 128 128 0 1 1 0-256z" />
+                            </svg>
                         </a>
                     </div>
                 </div>
@@ -94,22 +100,22 @@
         </a>
     </div>
 </div>
-<div class="testmonials_bg">
-    <div class="testmonials">
+<div class="testimonials_bg">
+    <div class="testimonials">
         <div class="left">
-            <div class="testmonials_desc">
+            <div class="testimonials_desc">
                 <h2>What our customers say about us</h2>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Incidunt blanditiis, veritatis necessitatibus aspernatur
-                    exercitationem tempora!
+                    Tender, juicy steak seared to perfection, topped with a luscious garlic butter sauce that melts in
+                    your mouth. Every
+                    bite is an explosion of savory flavors that will leave you craving for more
                 </p>
             </div>
         </div>
 
         <div class="right">
             <div class="customer_profile">
-                <img src="../../../assets/images/kellyncodes.png" alt="testimonial-customer" />
+                <img src="../../../assets/images/Avatar.png" alt="testimonial-customer" />
                 <div class="profile_details">
                     <h1>John Samson</h1>
                     <p>ENUGU, NIGERIA</p>
@@ -118,10 +124,10 @@
 
             <div class="what_customer_said">
                 <p>
-                    White dwarf a still more glorious dawn awaits tingling of rthe
-                    spine emerged into consciousness Vangells shores of the cosmic
-                    ocearn. Tendrils of gossamer clouds kinding the energy hidden in
-                    matter concept of the number on permanence.
+                    White dwarf a still more glorious dawn awaits tingling of the spine emerged into consciousness
+                    Vangelis shores of the
+                    cosmic ocean. Tendrils of gossamer clouds kindling the energy hidden in matter concept of the number
+                    one permanence.
                 </p>
             </div>
 
@@ -134,135 +140,13 @@
             </div>
 
             <div class="about_icon">
-                <i class="bi bi-quote"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M13.9355 22.0302V18.08C13.9355 17.5442 14.3643 17.1101 14.8933 17.1101C16.7808 17.1101 17.8074 15.1497 17.9497 11.2803L14.8933 11.2803C14.3643 11.2803 13.9355 10.8459 13.9355 10.3103V1.96962C13.9355 1.43415 14.3643 1 14.8933 1H23.0424C23.5716 1 24 1.43449 24 1.96962L24 10.3103C24 12.1652 23.8156 13.8674 23.452 15.3701C23.0792 16.9109 22.5069 18.2581 21.7514 19.3744C20.9741 20.5216 20.0018 21.4219 18.8613 22.049C17.7131 22.68 16.3778 23 14.893 23C14.3643 23 13.9355 22.5659 13.9355 22.0302ZM0.957905 17.1101C0.429165 17.1101 0 17.5446 0 18.08V22.0302C0 22.5659 0.429098 23 0.957905 23C2.44213 23 3.77757 22.6799 4.92538 22.049C6.0661 21.4219 7.03893 20.5216 7.81637 19.3744C8.57151 18.2581 9.14384 16.9108 9.51676 15.3697C9.8801 13.8665 10.0645 12.1643 10.0645 10.3103V1.96962C10.0645 1.43415 9.63555 1 9.10668 1H0.95797C0.429232 1 0.000469208 1.43449 0.000469208 1.96962L0.000469208 10.3104C0.000469208 10.8459 0.429165 11.2804 0.95797 11.2804L3.97076 11.2804C3.83061 15.1497 2.81894 17.1101 0.957905 17.1101Z"
+                        fill="#DA3743" />
+                </svg>
             </div>
         </div>
     </div>
 </div>
-
-
-<div class="blog_container">
-    <div class="blog_header">
-        <h1>Blog Our Latest News</h1>
-        <p>
-            Have you ever browsed food blogs like mine and wondered how to start
-            a food blog of your very own?
-        </p>
-    </div>
-
-    <div class="blogs">
-        <div class="blog">
-            <img src="../../../assets/images/img3.jpg" alt="meals_image" />
-
-            <div class="blog_description">
-                <p>
-                    <b>Design</b> 01 Octover 2019
-                </p>
-
-                <h4>Better Tha Takeout Kung Pan Chicken</h4>
-
-                <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta
-                    illum at repellendus asperiores iusto.
-                </p>
-
-                <a routerLink="blog_readmore">READ MORE</a>
-            </div>
-        </div>
-
-        <div class="blog">
-            <img src="../../../assets//images/img2.jpg" alt="meals_image" />
-
-            <div class="blog_description">
-                <p>
-                    <b>Design</b> 01 Octover 2019
-                </p>
-
-                <h4>Better Tha Takeout Kung Pan Chicken</h4>
-
-                <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta
-                    illum at repellendus asperiores iusto.
-                </p>
-
-                <a routerLink="blog_readmore">READ MORE</a>
-            </div>
-        </div>
-
-        <div class="blog">
-            <img src="../../../assets/images/img1.jpg" alt="food_blog_photo" />
-
-            <div class="blog_description">
-                <p>
-                    <b>Design</b> 01 October 2019
-                </p>
-
-                <h4>Better Tha Takeout Kung Pan Chicken</h4>
-
-                <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta
-                    illum at repellendus asperiores iusto.
-                </p>
-
-                <a routerLink="blog_readmore">READ MORE</a>
-            </div>
-        </div>
-
-        <div class="blog">
-            <img src="../../../assets/images/banana.jpg" alt="banana" />
-
-            <div class="blog_description">
-                <p>
-                    <b>Design</b> 01 Octover 2019
-                </p>
-
-                <h4>Better Tha Takeout Kung Pan Chicken</h4>
-
-                <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta
-                    illum at repellendus asperiores iusto.
-                </p>
-
-                <a routerLink="blog_readmore">READ MORE</a>
-            </div>
-        </div>
-
-        <div class="blog">
-            <img src="../../../assets/images/banana.jpg" alt="banana" />
-
-            <div class="blog_description">
-                <p>
-                    <b>Design</b> 01 Octover 2019
-                </p>
-
-                <h4>Better Tha Takeout Kung Pan Chicken</h4>
-
-                <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta
-                    illum at repellendus asperiores iusto.
-                </p>
-
-                <a routerLink="blog_readmore">READ MORE</a>
-            </div>
-        </div>
-
-        <div class="blog">
-            <img src="../../../assets/images/banana.jpg" alt="banana" />
-
-            <div class="blog_description">
-                <p>
-                    <b>Design</b> 01 Octover 2019
-                </p>
-
-                <h4>Better Tha Takeout Kung Pan Chicken</h4>
-
-                <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta
-                    illum at repellendus asperiores iusto.
-                </p>
-
-                <a routerLink="blog_readmore">READ MORE</a>
-            </div>
-        </div>
-    </div>
-</div>
+<meal-blog></meal-blog>

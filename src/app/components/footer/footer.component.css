@@ -1,0 +1,224 @@
+/* =========================footer section================== */
+footer {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--footer_color);
+}
+
+.footer {
+  width: var(--container_width_lg);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 3rem;
+}
+
+.footer .footer_up {
+  width: 100%;
+  height: 12rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.footer .company_logo {
+  width: 10rem;
+  height: 100%;
+  display: flex;
+  align-items: top;
+  justify-content: center;
+  gap: 0.5rem;
+  padding-top: 0.3em;
+}
+
+.footer .company_logo img {
+  width: 10rem;
+  height: 5rem;
+  object-fit: contain;
+}
+
+.footer .links {
+  width: 30rem;
+  height: 95%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer .links .company {
+  width: 15rem;
+  height: 100%;
+  display: flex;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.footer .links .company a,
+.services a {
+  width: fit-content;
+  height: fit-content;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--black_color);
+  transition: all 800ms ease-in-out;
+}
+
+.footer .links .social_links {
+  display: none;
+}
+
+.footer .links .company a:hover,
+.services a:hover {
+  text-decoration: underline;
+}
+
+.footer .links .services {
+  width: 15rem;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.footer .footer_down {
+  border-top: 1.5px solid #ccc;
+  width: 100%;
+  height: 47%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer .footer_down .social_links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 20rem;
+  height: fit-content;
+}
+
+.footer .footer_down .social_links .social_icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--footer_color);
+  box-shadow: var(--box-shadow);
+  transition: 500ms ease;
+}
+
+.footer .footer_down .social_links .social_icon:hover {
+  cursor: pointer;
+  box-shadow: var(--box-shadow);
+  color: var(--primary_color);
+}
+
+@media screen and (max-width: 600px) {
+  /* =========================footer section================== */
+  footer {
+    width: 100%;
+    height: fit-content;
+  }
+
+  .footer {
+    width: var(--container_width_sm);
+    padding: 0;
+  }
+
+  .footer .footer_up {
+    width: 100%;
+    height: fit-content;
+  }
+
+  .footer .company_logo {
+    width: 100%;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
+  }
+
+  .footer .company_logo img {
+    width: 6rem;
+    height: 6rem;
+    object-fit: contain;
+  }
+
+  .footer .links {
+    position: relative;
+    width: 100%;
+    height: 20rem;
+    flex-wrap: unset;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer .links .company {
+    width: 15rem;
+    height: 12rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+  }
+
+  .footer .links .services {
+    width: 15rem;
+    height: 15rem;
+    display: flex;
+    align-items: right;
+    justify-content: space-evenly;
+    flex-direction: column;
+  }
+
+  .footer .links .social_links {
+    display: flex;
+    position: absolute;
+    bottom: 3%;
+    left: 3%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 60%;
+    height: fit-content;
+  }
+
+  .footer .links .social_links .social_icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--footer_color);
+    box-shadow: var(--box-shadow);
+    border: 1px solid #ccc;
+  }
+
+  .footer .footer_down {
+    border-top: 1.5px solid #ccc;
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    flex-wrap: unset;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer .footer_down .social_links {
+    display: none;
+  }
+}

@@ -11,6 +11,9 @@ import { Observable } from 'rxjs';
 export class ProductService {
   constructor(private http: HttpClient) {}
 
+
+  
+
   getProduct(id: string): Observable<HttpResponse<ProductDto>> {
     return this.http.get<HttpResponse<ProductDto>>(
       `${environment.apiUrl}/product/${id}`
