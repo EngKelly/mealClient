@@ -28,7 +28,7 @@ export class ProductComponent {
   constructor(
     private productService: ProductService,
     private cartService: CartService,
-    private activeRoute: ActivatedRoute,
+    @Inject(ActivatedRoute) private activeRoute: ActivatedRoute,
     private jwtService: JwtService,
     private userService: UserService
   ) {}

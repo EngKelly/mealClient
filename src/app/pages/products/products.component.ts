@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { JwtService } from './../../utils/jwt.service';
 import { UserDto } from '../../data/Dto/auth/user.dto';
 import { ProductDto } from './../../data/Dto/product/product.dto';
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, Inject } from '@angular/core';
 
 @Component({
   selector: 'meal-products',
@@ -23,7 +23,7 @@ export class ProductsComponent {
   constructor(
     private jwtService: JwtService,
     private userService: UserService,
-    private activeRoute: ActivatedRoute,
+    @Inject(ActivatedRoute) private activeRoute: ActivatedRoute,
     private productService: ProductService
   ) {}
 

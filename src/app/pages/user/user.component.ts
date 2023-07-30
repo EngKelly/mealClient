@@ -1,7 +1,7 @@
 import { AuthService } from './../../services/auth/auth.service';
 import { UserService } from './../../services/user/user.service';
-import { Component } from '@angular/core';
-import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
+import { Component, Inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { UserDto } from '../../data/Dto/auth/user.dto';
 import { JwtService } from '../../utils/jwt.service';
 
@@ -14,10 +14,9 @@ export class UserComponent {
   user!: UserDto | undefined;
   userId!: string;
   constructor(
-    private router: Router,
     private userService: UserService,
     private authService: AuthService,
-    private activeRoute: ActivatedRoute
+    @Inject(ActivatedRoute) private activeRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {

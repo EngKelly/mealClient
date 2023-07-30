@@ -1,7 +1,7 @@
 import { ProductService } from './../../services/product/product.service';
 import { ProductDto } from './../../data/Dto/product/product.dto';
 import { UserDto } from '../../data/Dto/auth/user.dto';
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, Inject } from '@angular/core';
 import { JwtService } from '../../utils/jwt.service';
 import { UserService } from '../../services/user/user.service';
 import { ActivatedRoute } from '@angular/router';
@@ -9,13 +9,13 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'meal-index',
   templateUrl: './index.component.html',
-  styleUrls: ['./index.component.css'],
+  styleUrls: [],
 })
 export class IndexComponent {
   constructor(
     private jwtService: JwtService,
     private userService: UserService,
-    private activeRoute: ActivatedRoute,
+    @Inject(ActivatedRoute) private activeRoute: ActivatedRoute,
     private productService: ProductService
   ) {}
 

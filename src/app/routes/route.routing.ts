@@ -9,7 +9,7 @@ import { UserComponent } from '../pages/user/user.component';
 import { UsersComponent } from '../pages/users/users.component';
 import { CartComponent } from '../pages/cart/cart.component';
 import { BlogComponent } from '../pages/blog/blog.component';
-import { BlogDetailComponent } from '../blog-detail/blog-detail.component';
+import { BlogDetailComponent } from '../components/blog-detail/blog-detail.component';
 
 export const routes: Routes = [
   { path: '', component: IndexComponent },
