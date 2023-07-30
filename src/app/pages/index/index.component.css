@@ -111,8 +111,7 @@
   font-size: 2rem;
 }
 
-/* ============================Food section ================================== */
-@import url("../products/products.component.css");
+
 /* ==================.testimonials section ====================== */
 .testimonials_bg {
   position: relative;

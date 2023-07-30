@@ -73,3 +73,6 @@ body {
     padding: 1rem;
   }
 }
+
+/* ============================Food section ================================== */
+@import url("../products/products.component.css");
