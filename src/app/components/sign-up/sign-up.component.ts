@@ -21,7 +21,7 @@ export class SignUpComponent {
     password: '',
     roles: ['user'],
   };
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService) {}
 
   setTimeOut(timeOut: number = 2000): void {
     setTimeout(() => {

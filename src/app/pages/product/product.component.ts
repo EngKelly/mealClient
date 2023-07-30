@@ -3,7 +3,7 @@ import { JwtService } from './../../utils/jwt.service';
 import { ActivatedRoute } from '@angular/router';
 import { ProductDto } from './../../data/Dto/product/product.dto';
 import { ProductService } from './../../services/product/product.service';
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { HttpStatusCode } from '@angular/common/http';
 import { CartService } from '../../services/cart/cart.service';
 import { CartDto } from '../../data/Dto/cart/cart.dto';

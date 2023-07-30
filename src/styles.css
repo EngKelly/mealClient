@@ -75,4 +75,4 @@ body {
 }
 
 /* ============================Food section ================================== */
-@import url("../products/products.component.css");
+@import url("./app/pages/products/products.component.css");

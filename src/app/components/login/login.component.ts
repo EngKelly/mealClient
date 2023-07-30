@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { HttpResponse } from '../../data/Dto/auth/http.response';
 import { LoginDto } from '../../data/Dto/auth/login.dto';
 import { AuthService } from '../../services/auth/auth.service';
-import { NavigationStart, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'meal-login',
@@ -10,7 +10,7 @@ import { NavigationStart, Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService) {}
   error!: HttpResponse | null;
   IsFetching!: boolean;
   user: LoginDto = { email: '', password: '', IsRememberMe: false };

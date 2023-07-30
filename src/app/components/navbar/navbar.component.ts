@@ -2,6 +2,7 @@ import { UserService } from '../../services/user/user.service';
 import { Component, HostListener } from '@angular/core';
 import { JwtService } from '../../utils/jwt.service';
 import { UserDto } from '../../data/Dto/auth/user.dto';
+import { ProductCartDto } from 'src/app/data/Dto/cart/productCart.dto';
 
 @Component({
   selector: 'meal-navbar',
@@ -11,7 +12,7 @@ import { UserDto } from '../../data/Dto/auth/user.dto';
 export class NavbarComponent {
   IsOpen: boolean = false;
   IsMobile!: boolean;
-  products!: any[];
+  products: ProductCartDto[] = [];
   userToken: any = this.jwtService.decodeJwtToken();
   user!: UserDto | undefined;
 
