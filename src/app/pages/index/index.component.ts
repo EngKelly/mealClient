@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'meal-index',
   templateUrl: './index.component.html',
-  styleUrls: [],
+  styleUrls: ['./index.component.css'],
 })
 export class IndexComponent {
   constructor(

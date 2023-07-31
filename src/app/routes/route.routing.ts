@@ -6,15 +6,14 @@ import { IndexComponent } from '../pages/index/index.component';
 import { SignUpComponent } from '../components/sign-up/sign-up.component';
 import { LoginComponent } from '../components/login/login.component';
 import { UserComponent } from '../pages/user/user.component';
-import { UsersComponent } from '../pages/users/users.component';
 import { CartComponent } from '../pages/cart/cart.component';
 import { BlogComponent } from '../pages/blog/blog.component';
 import { BlogDetailComponent } from '../components/blog-detail/blog-detail.component';
+import { UsersComponent } from '../pages/admin/users/users.component';
 
 export const routes: Routes = [
   { path: '', component: IndexComponent },
   { path: 'home', component: IndexComponent },
-  { path: 'users', component: UsersComponent },
   { path: 'user/:userId', component: UserComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'product/:productId', component: ProductComponent },
