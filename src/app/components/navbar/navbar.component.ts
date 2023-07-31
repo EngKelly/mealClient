@@ -14,7 +14,8 @@ export class NavbarComponent {
   IsMobile!: boolean;
   products: ProductCartDto[] = [];
   userToken: any = this.jwtService.decodeJwtToken();
-  user!: UserDto | undefined;
+  user!: UserDto | null;
+  IsLoggedIn: boolean = false;
 
   constructor(
     private jwtService: JwtService,
@@ -23,16 +24,6 @@ export class NavbarComponent {
 
   ngOnInit() {
     this.handleWindowResize();
-    this.handleWindowResize();
-    this.userService.getUser(this.userToken.data.id).subscribe({
-      next: (response) => {
-        this.user = response.data;
-        console.log(this.user?.username);
-      },
-      error: (err) => {
-        console.log('Error getting the current logged in user');
-      },
-    });
   }
 
   @HostListener('window:resize', ['$event'])
@@ -49,6 +40,25 @@ export class NavbarComponent {
     } else {
       this.IsMobile = false;
     }
+  }
+
+  getUser(): any {
+    if (this.userToken.data == null) {
+      this.user = null;
+      this.IsLoggedIn = false;
+      return null;
+    }
+    this.userService.getUser(this.userToken.id).subscribe({
+      next: (response) => {
+        this.IsLoggedIn = true;
+        return response.data;
+      },
+      error: (err) => {
+        this.IsLoggedIn = false;
+        this.user = null;
+        console.log('Error getting the current logged in user');
+      },
+    });
   }
 
   toggle(): void {
