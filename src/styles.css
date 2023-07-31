@@ -11,6 +11,8 @@ body {
   overflow-x: hidden;
 }
 
+/* in styles.css or styles.scss */
+
 :root {
   --box-shadow: 0.5px 0.5px 6px rgba(221, 216, 216, 0.637);
   --primary_color: #fd2b2b;
