@@ -11,8 +11,15 @@ import { Observable } from 'rxjs';
 export class ProductService {
   constructor(private http: HttpClient) {}
 
+  createProduct(model: ProductDto): Observable<HttpResponse<ProductDto>> {
+    const url: string = `${environment.apiUrl}/product/new`;
+    return this.http.post<HttpResponse<ProductDto>>(url, model);
+  }
 
-  
+  postImage(file: FormData): Observable<HttpResponse<{ ImgPath: string }>> {
+    const url: string = `${environment.apiUrl}/file`;
+    return this.http.post<HttpResponse<{ ImgPath: string }>>(url, file);
+  }
 
   getProduct(id: string): Observable<HttpResponse<ProductDto>> {
     return this.http.get<HttpResponse<ProductDto>>(

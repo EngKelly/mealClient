@@ -6,7 +6,6 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { FooterComponent } from './footer/footer.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { NgMaterialModule } from '../design/ng-material.module';
 import { RoutesModule } from '../routes/routes.module';
 import { FormsModule } from '@angular/forms';
 
@@ -19,7 +18,7 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     BlogDetailComponent,
   ],
-  imports: [CommonModule, NgMaterialModule, RoutesModule, FormsModule],
+  imports: [CommonModule, RoutesModule, FormsModule],
   exports: [SearchBarComponent, FooterComponent, NavbarComponent],
 })
 export class ComponentModule {}

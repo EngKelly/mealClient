@@ -24,6 +24,7 @@ export class NavbarComponent {
 
   ngOnInit() {
     this.handleWindowResize();
+    this.getUser();
   }
 
   @HostListener('window:resize', ['$event'])
@@ -48,10 +49,10 @@ export class NavbarComponent {
       this.IsLoggedIn = false;
       return null;
     }
-    this.userService.getUser(this.userToken.id).subscribe({
+    this.userService.getUser(this.userToken.data.id).subscribe({
       next: (response) => {
         this.IsLoggedIn = true;
-        return response.data;
+        this.user = response.data;
       },
       error: (err) => {
         this.IsLoggedIn = false;
