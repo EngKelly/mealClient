@@ -9,13 +9,7 @@ export interface ProductDto {
 
   categories: string[];
 
-  size: string[];
-
-  color: string[];
-
   price: number;
-
-  quantity: number;
 
   InStock: boolean;
 }

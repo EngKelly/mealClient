@@ -1,8 +1,9 @@
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { Component } from '@angular/core';
+import { HttpStatusCode } from '@angular/common/http';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductDto } from 'src/app/data/Dto/product/product.dto';
-
+import { localStorageToken } from 'src/app/extension/local.storage';
+import { ProductService } from 'src/app/services/product/product.service';
 @Component({
   selector: 'meal-product',
   templateUrl: './product.component.html',
@@ -10,24 +11,81 @@ import { ProductDto } from 'src/app/data/Dto/product/product.dto';
 })
 export class AdminProductComponent {
   foodForm: FormGroup;
+  ImgPath!: string;
+  errorMessage!: any;
+  successMessage!: any;
+  uploadingImage!: boolean;
+  uploaded!: boolean;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private productService: ProductService,
+    @Inject(localStorageToken) private localStorage: Storage
+  ) {
     this.foodForm = this.formBuilder.group({
       title: ['', Validators.required],
-      img: ['', Validators.required],
-      Instock: [false, Validators.required],
-      size: [[], Validators.required],
-      color: [[], Validators.required],
-      categories: [[], Validators.required],
+      InStock: ['', Validators.required],
+      categories: ['', Validators.required],
       desc: ['', Validators.required],
       price: ['', [Validators.required, Validators.min(0)]],
+      date: [''],
+    });
+  }
+
+  onFileSelect(event: any): void {
+    if (event.target.files.length <= 0) {
+      return;
+    }
+    const image: File = event.target.files[0];
+    this.uploadFile(image);
+    this.ImgPath = this.localStorage.getItem('ImgPath')!;
+  }
+
+  uploadFile(file: File) {
+    this.uploadingImage = true;
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+
+    this.productService.postImage(formData).subscribe({
+      next: (res) => {
+        console.log(res);
+
+        if (res.statusCode == HttpStatusCode.Ok) {
+          this.localStorage.removeItem('ImgPath');
+          this.localStorage.setItem('ImgPath', res.data.ImgPath);
+          this.uploaded = true;
+          this.uploadingImage = false;
+        } else {
+          this.uploaded = false;
+          this.uploadingImage = false;
+        }
+      },
+      error: (err) => {
+        console.log(err);
+        this.errorMessage = err.message.message;
+        this.uploadingImage = false;
+      },
     });
   }
 
   onSubmit() {
     if (this.foodForm.valid) {
-      const newFoodItem: ProductDto = this.foodForm.value;
-      console.log(newFoodItem); // Replace with your logic to save the new food item
+      let newFoodItem: ProductDto = this.foodForm.value;
+      newFoodItem.img = this.localStorage.getItem('ImgPath')!;
+      this.productService.createProduct(newFoodItem).subscribe({
+        next: (response) => {
+          if (response.statusCode == HttpStatusCode.Ok) {
+            this.successMessage = response.message;
+          } else {
+            this.errorMessage =
+              'Something went wrong while uploading the product.';
+          }
+        },
+        error: (err) => {
+          this.errorMessage = err.message.message;
+          console.log(err.message);
+        },
+      });
     }
   }
 }

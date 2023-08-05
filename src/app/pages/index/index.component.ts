@@ -55,6 +55,11 @@ export class IndexComponent {
     }
   }
 
+  @HostListener('window:offline', ['$event'])
+  OnBrowserOffline(event: Event): void {
+    console.log('oflline');
+  }
+
   activeBtn(): void {
     this.IsActive = !this.IsActive;
   }

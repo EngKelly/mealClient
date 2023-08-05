@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { RoutesModule } from './routes/routes.module';
 import { JwtTokenInterceptor } from './extension/http.interceptor';
 import { FormsModule } from '@angular/forms';
-import { NgMaterialModule } from './design/ng-material.module';
 import { PagesModule } from './pages/pages.module';
 
 @NgModule({
@@ -15,7 +14,6 @@ import { PagesModule } from './pages/pages.module';
     RoutesModule,
     FormsModule,
     HttpClientModule,
-    NgMaterialModule,
     PagesModule,
   ],
   providers: [
