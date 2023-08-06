@@ -24,7 +24,6 @@ import { MatRadioModule } from '@angular/material/radio';
     ReactiveFormsModule,
     MatFormFieldModule,
     CommonModule,
-    BrowserAnimationsModule,
     MatOptionModule,
     MatSelectModule,
     MatButtonModule,

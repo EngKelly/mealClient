@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="password_container">
-                    <h5 *ngIf="IsFetching" class="errorOutput">Fetching User</h5>
+                    <h5 *ngIf="IsFetching" class="errorOutput">Loading...</h5>
                     <h5 *ngIf="error?.message != null" class="errorOutput">
                         {{error?.message}}
                     </h5>

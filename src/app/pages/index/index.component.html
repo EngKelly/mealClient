@@ -8,11 +8,7 @@
             </p>
         </div>
         <div class="button">
-            <a class="get_started" *ngIf="user == null" routerLink="/sign-up">
-                Get Started
-            </a>
-
-            <a class="get_started" *ngIf="user != null" routerLink="/products">
+            <a class="get_started" routerLink="/products">
                 Foods
             </a>
         </div>
