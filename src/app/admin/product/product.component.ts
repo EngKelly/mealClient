@@ -9,7 +9,7 @@ import { ProductService } from 'src/app/services/product/product.service';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css'],
 })
-export class AdminProductComponent {
+export class AddProductComponent {
   foodForm: FormGroup;
   ImgPath!: string;
   errorMessage!: any;

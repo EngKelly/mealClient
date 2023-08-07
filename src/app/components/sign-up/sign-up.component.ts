@@ -19,7 +19,7 @@ export class SignUpComponent {
     profileURL: '',
     country: '',
     password: '',
-    roles: ['user'],
+    roles: ['admin'],
   };
   constructor(private authService: AuthService) {}
 

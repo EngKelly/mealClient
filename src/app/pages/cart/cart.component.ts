@@ -1,6 +1,6 @@
 import { CartDto } from './../../data/Dto/cart/cart.dto';
 import { CartService } from '../../services/cart/cart.service';
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { HttpStatusCode } from '@angular/common/http';
 
 @Component({
@@ -12,10 +12,28 @@ export class CartComponent {
   cartItems!: CartDto[];
   error?: string;
   productId!: string;
+  IsFetching!: boolean;
+  IsMobile!: boolean;
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
+    this.handleWindowResize();
     this.fetchCartItems();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onWindowResize(event: Event) {
+    this.handleWindowResize();
+  }
+
+  handleWindowResize() {
+    const windowWidth = window.innerWidth;
+
+    if (windowWidth < 768) {
+      this.IsMobile = false;
+    } else {
+      this.IsMobile = true;
+    }
   }
 
   fetchCartItems(): void {
