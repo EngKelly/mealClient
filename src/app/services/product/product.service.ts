@@ -17,7 +17,7 @@ export class ProductService {
   }
 
   postImage(file: FormData): Observable<HttpResponse<{ ImgPath: string }>> {
-    const url: string = `${environment.apiUrl}/file`;
+    const url: string = `${environment.apiUrl}/uploads/product`;
     return this.http.post<HttpResponse<{ ImgPath: string }>>(url, file);
   }
 
