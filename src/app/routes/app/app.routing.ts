@@ -1,3 +1,4 @@
+import { navigationGuard } from './../../guard/navigation/navigation.guard';
 import { authGuard } from './../../guard/auth/auth.guard';
 import { PageNotFoundComponent } from '../../components/page-not-found/page-not-found.component';
 import { ProductComponent } from '../../pages/product/product.component';
@@ -24,8 +25,18 @@ export const routes: Routes = [
     title: 'Carts',
   },
   { path: 'cart/:id', component: CartComponent },
-  { path: 'login', component: LoginComponent, title: 'Login' },
-  { path: 'sign-up', component: SignUpComponent, title: 'SignUp' },
+  {
+    path: 'login',
+    component: LoginComponent,
+    title: 'Login',
+    canActivate: [navigationGuard],
+  },
+  {
+    path: 'sign-up',
+    component: SignUpComponent,
+    title: 'SignUp',
+    canActivate: [navigationGuard],
+  },
   {
     path: 'admin',
     title: 'Admin',

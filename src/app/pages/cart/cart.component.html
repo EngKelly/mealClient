@@ -1,3 +1,6 @@
+<br>
+<br>
+
 <div *ngIf="IsMobile" class="searchFoodContainer">
     <meal-search-bar></meal-search-bar>
 </div>
@@ -31,10 +34,18 @@
     </div>
 
     <div class="full_menu" *ngIf="IsFetching">
-        <h5 routerLink="/products" class="full_menu_btn">
+        <h5 class="full_menu_btn">
             Fetching cartItems...
         </h5>
+    </div>
+
+    <div class="full_menu" *ngIf="cartItems == null">
+        <a routerLink="/products" class="full_menu_btn">
+            No food in cart! click here to Order food
+        </a>
     </div>
 </div>
 
 <h4 *ngIf="error != null"> {{error}} </h4>
+<br>
+<br>

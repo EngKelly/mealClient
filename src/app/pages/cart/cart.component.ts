@@ -2,6 +2,7 @@ import { CartDto } from './../../data/Dto/cart/cart.dto';
 import { CartService } from '../../services/cart/cart.service';
 import { Component, HostListener } from '@angular/core';
 import { HttpStatusCode } from '@angular/common/http';
+import { JwtService } from 'src/app/utils/jwt.service';
 
 @Component({
   selector: 'meal-cart',
@@ -14,11 +15,18 @@ export class CartComponent {
   productId!: string;
   IsFetching!: boolean;
   IsMobile!: boolean;
-  constructor(private cartService: CartService) {}
+  userId!: string;
+  constructor(
+    private cartService: CartService,
+    private jwtService: JwtService
+  ) {}
 
   ngOnInit(): void {
     this.handleWindowResize();
-    this.fetchCartItems();
+    const userId: string | null = this.jwtService.decodeJwtToken().data.id;
+    if (userId != null) {
+      this.fetchCartItems(userId);
+    }
   }
 
   @HostListener('window:resize', ['$event'])
@@ -36,8 +44,8 @@ export class CartComponent {
     }
   }
 
-  fetchCartItems(): void {
-    this.cartService.fetchCartItemsAsync().subscribe({
+  fetchCartItems(userId: string): void {
+    this.cartService.fetchCartItemsAsync('', 1, 1, userId).subscribe({
       next: (res) => {
         if (res.statusCode == HttpStatusCode.Ok) {
           this.cartItems = res.data;
@@ -49,7 +57,6 @@ export class CartComponent {
         console.log(err);
       },
     });
-    console.log(this.cartItems);
   }
 
   deleteCartItem(id: string | undefined): void {}

@@ -38,7 +38,7 @@ export class AddProductComponent {
     }
     const image: File = event.target.files[0];
     this.uploadFile(image);
-    this.ImgPath = this.localStorage.getItem('ImgPath')!;
+    this.ImgPath = this.localStorage.getItem('ProductImgPath')!;
   }
 
   uploadFile(file: File) {
@@ -48,11 +48,9 @@ export class AddProductComponent {
 
     this.productService.postImage(formData).subscribe({
       next: (res) => {
-        console.log(res);
-
         if (res.statusCode == HttpStatusCode.Ok) {
-          this.localStorage.removeItem('ImgPath');
-          this.localStorage.setItem('ImgPath', res.data.ImgPath);
+          this.localStorage.removeItem('ProductImgPath');
+          this.localStorage.setItem('ProductImgPath', res.data.ImgPath);
           this.uploaded = true;
           this.uploadingImage = false;
         } else {
@@ -62,8 +60,9 @@ export class AddProductComponent {
       },
       error: (err) => {
         console.log(err);
-        this.errorMessage = err.message.message;
+        this.errorMessage = err.error.message.message;
         this.uploadingImage = false;
+        this.uploaded = false;
       },
     });
   }
