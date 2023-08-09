@@ -4,8 +4,11 @@
             <form #ngForm (ngSubmit)="onSubmit()">
                 <input type="name" class="form-control mb-3" name="username" [(ngModel)]="user.username"
                     placeholder="Username" required="" />
-                <input type="text" class="form-control mb-3" name="profileURL" [(ngModel)]="user.profileURL"
-                    placeholder="https://google.com/images/person.jpg" required="" />
+                <label class="mb-2 mt-2" for="profileURL">Profile Image</label>
+                <input type="file" (change)="onFileSelect($event)" class=" form-control mb-3" name="profileURL"
+                    [(ngModel)]="user.profileURL" required="" />
+                <a *ngIf="uploaded" [href]="UserImgPath">View</a>
+                <h5 class="mb-2 mt-2" *ngIf="uploaded == false">Image not uploaded try again!</h5>
                 <input type="text" class="form-control mb-3" name="country" [(ngModel)]="user.country"
                     placeholder="Country" required="" />
                 <input type="number" class="form-control mb-3" name="phone" [(ngModel)]="user.phone"
@@ -19,7 +22,7 @@
                 </div>
 
                 <div class="password_container">
-                    <h5 *ngIf="IsFetching" class="errorOutput">Fetching User</h5>
+                    <h5 *ngIf="IsFetching" class="errorOutput">Loading...</h5>
                     <h5 *ngIf="error?.message != null" class="errorOutput">
                         {{error?.message}}
                     </h5>
@@ -38,7 +41,7 @@
                 </div>
                 <div class="reg">
                     <p>Already Have An Account</p>
-                    <a class="reg_btn" routerLink="/Login">
+                    <a class="reg_btn" routerLink="/login">
                         Login
                     </a>
                 </div>

@@ -30,21 +30,21 @@
                 </div>
                 <li>
                     <!-- <BsFillHouseDoorFill class="icon i" /> -->
-                    <a routerLink="/" routerLinkActive="active" (click)="toggle()">
+                    <a routerLink="/" class="active" routerLinkActive="" (click)="toggle()">
                         Home
                     </a>
                 </li>
                 <li>
                     <!-- <BsBasket2 class="icon i" /> -->
-                    <a routerLinkActive="active" href="#menu">Menu</a>
+                    <a routerLinkActive="" href="#menu">Menu</a>
                 </li>
                 <li>
                     <!-- <BsCart3 class="icon i" /> -->
-                    <a routerLinkActive="active" href="#mytray">my-tray</a>
+                    <a routerLinkActive="" href="#mytray">my-tray</a>
                 </li>
                 <li>
                     <!-- <BsFillJournalBookmarkFill class="icon i" /> -->
-                    <a routerLinkActive="active" href="#mealplans">meal-plans</a>
+                    <a routerLinkActive="" href="#mealplans">meal-plans</a>
                 </li>
                 <li> </li>
             </ul>
@@ -105,7 +105,7 @@
                     </svg>
                 </a>
             </div>
-            <div [ngClass]="IsOpen ? 'navbar_toggle active' : 'navbar_toggle'" *ngIf="IsMobile" (click)="toggle()">
+            <div *ngIf="IsMobile" [ngClass]="IsOpen ? 'navbar_toggle active' : 'navbar_toggle'" (click)="toggle()">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>

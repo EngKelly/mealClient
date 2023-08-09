@@ -99,7 +99,7 @@ body {
   nav,
   .home,
   .food_menu,
-  .testmonials,
+  .testimonials,
   .blog_container,
   .footer {
     width: var(--container_width_md);

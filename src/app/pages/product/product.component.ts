@@ -1,6 +1,6 @@
 import { UserService } from './../../services/user/user.service';
 import { JwtService } from './../../utils/jwt.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductDto } from './../../data/Dto/product/product.dto';
 import { ProductService } from './../../services/product/product.service';
 import { Component, Inject } from '@angular/core';
@@ -30,19 +30,19 @@ export class ProductComponent {
     private cartService: CartService,
     @Inject(ActivatedRoute) private activeRoute: ActivatedRoute,
     private jwtService: JwtService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {}
   ngOnInit(): void {
-    this.productId = this.activeRoute.snapshot.params['productId'];
+    this.productId = this.activeRoute.snapshot.params['productId'] ?? '';
     this.getProduct(this.productId);
-    const { id } = this.jwtService.decodeJwtToken().data;
+    const { id } = this.jwtService.decodeJwtToken().data ?? '';
     this.userService.getUser(id).subscribe({
       next: (response) => {
         this.user = response.data;
-        console.log(this.user?.username);
       },
       error: (err) => {
-        console.log('Error getting the current logged in user');
+        this.error = err.message.message;
       },
     });
   }
@@ -59,7 +59,6 @@ export class ProductComponent {
       },
       error: (err) => {
         this.IsFetchingProduct = false;
-        console.log(err.error.message);
         this.error = err.error.message.message;
       },
     });
@@ -81,7 +80,9 @@ export class ProductComponent {
 
   addItemToCart(): void {
     if (this.user == null) {
-      this.error = 'Item was not added with reason: user not found.';
+      this.error =
+        'Item was not added with reason: user not found. navigating to login page';
+      this.router.navigateByUrl('login');
       return;
     }
     const cartDto: CartDto = {
@@ -99,7 +100,6 @@ export class ProductComponent {
         desc: this.product.desc,
       },
     };
-    console.log(cartDto);
     this.cartService.add(cartDto).subscribe({
       next: (res) => {
         if (res.statusCode == HttpStatusCode.Ok) {
@@ -107,7 +107,6 @@ export class ProductComponent {
         }
       },
       error: (err) => {
-        console.log(err.error.message);
         this.error = err.error.message.message;
       },
     });

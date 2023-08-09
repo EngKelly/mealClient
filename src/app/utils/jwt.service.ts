@@ -13,18 +13,17 @@ export class JwtService {
     if (this.token == null) {
       return { IsSuccessful: false, token: null };
     }
-    return { IsSuccessful: false, token: this.token };
+    return { IsSuccessful: true, token: this.token };
   }
 
   decodeJwtToken(): { IsSuccessful: boolean; data: any } {
     try {
       if (this.token == null) {
-        throw new Error('No Token Found');
+        return { IsSuccessful: false, data: null };
       }
       const decodedToken = jwt_decode(this.token);
       return { IsSuccessful: true, data: decodedToken };
     } catch (error) {
-      console.error('Failed to decode JWT token:', error);
       return { IsSuccessful: false, data: null };
     }
   }

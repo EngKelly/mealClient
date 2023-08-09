@@ -32,6 +32,11 @@ export class AuthService {
     return this.http.post<HttpResponse<{ token: string }>>(url, model);
   }
 
+  postImage(file: FormData): Observable<HttpResponse<{ ImgPath: string }>> {
+    const url: string = `${environment.apiUrl}/uploads/user`;
+    return this.http.post<HttpResponse<{ ImgPath: string }>>(url, file);
+  }
+
   saveUserSession(user: any): boolean {
     if (user == null) {
       return false;
