@@ -60,6 +60,7 @@
             <mat-radio-button value="false">Not In-stock</mat-radio-button>
         </mat-radio-group>
 
-        <button class="input" class="btn btn-danger rounded" [disabled]="foodForm.invalid" type="submit">Submit</button>
+        <button class="input" class="btn btn-danger rounded" [innerHTML]="UploadingProduct ? 'Uploading': 'Submit'"
+            [disabled]="foodForm.invalid" type="submit"></button>
     </form>
 </div>

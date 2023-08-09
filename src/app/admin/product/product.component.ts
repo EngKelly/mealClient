@@ -16,6 +16,7 @@ export class AddProductComponent {
   successMessage!: any;
   uploadingImage!: boolean;
   uploaded!: boolean;
+  UploadingProduct!: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -69,22 +70,27 @@ export class AddProductComponent {
 
   onSubmit() {
     if (this.foodForm.valid) {
+      this.UploadingProduct = true;
       let newFoodItem: ProductDto = this.foodForm.value;
-      newFoodItem.img = this.localStorage.getItem('ImgPath')!;
+      newFoodItem.img = this.localStorage.getItem('ProductImgPath')!;
       this.productService.createProduct(newFoodItem).subscribe({
         next: (response) => {
           if (response.statusCode == HttpStatusCode.Ok) {
+            this.UploadingProduct = false;
             this.successMessage = response.message;
           } else {
+            this.UploadingProduct = false;
             this.errorMessage =
               'Something went wrong while uploading the product.';
           }
         },
         error: (err) => {
-          this.errorMessage = err.message.message;
-          console.log(err.message);
+          this.UploadingProduct = false;
+          this.errorMessage = err.error.message.message;
+          console.log(err);
         },
       });
+      this.foodForm.reset();
     }
   }
 }
