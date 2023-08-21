@@ -8,6 +8,7 @@ import { CartComponent } from './cart/cart.component';
 import { BlogComponent } from './blog/blog.component';
 import { FormsModule } from '@angular/forms';
 import { TruncatePipe } from '../pipes/truncate-string';
+import { OrderComponent } from './order/order.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { TruncatePipe } from '../pipes/truncate-string';
     CartComponent,
     BlogComponent,
     TruncatePipe,
+    OrderComponent,
   ],
   imports: [ComponentModule, FormsModule],
   exports: [ComponentModule],

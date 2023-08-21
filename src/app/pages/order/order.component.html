@@ -1,0 +1,49 @@
+<br>
+<br>
+<h5 *ngIf="IsFetching" class="badge bg-danger text-white m-auto">
+    Fetching orders...
+</h5>
+
+<h4 class="badge bg-success p-1 m-auto ml-4">{{message}}</h4>
+
+<a *ngIf="orders == null" routerLink="/products" class="badge bg-danger m-auto text-white">
+    No food in cart! click here to Order food.
+</a>
+
+<h4 *ngIf="error != null" class="badge bg-danger p-1 m-auto ml-4"> {{error}} </h4>
+<h4 *ngIf="IsDeleting" class="badge bg-danger p-1 m-auto ml-4">Deleting...</h4>
+
+<div *ngIf="IsMobile" class="searchFoodContainer">
+    <meal-search-bar></meal-search-bar>
+</div>
+<div class="food_menu">
+    <h1>ORDERS</h1>
+    <ul>
+        <div class="current_menu">
+            <li>Current Orders</li>
+        </div>
+    </ul>
+    <div class="foods" *ngIf="orders != null && !IsFetching">
+        <div *ngFor="let order of orders" class="food">
+            <div class="food_img">
+                <img [src]="order.product.product.img" [alt]="order.product.product.title">
+            </div>
+
+            <div class="food_description">
+                <h4> {{order.product.product.desc}} </h4>
+                <p> {{order.product.product.title}} </p>
+                <div class="cart">
+                    <h3>
+                        <i class="fa-solid fa-naira-sign"></i>
+                        <span> {{order.product.product.price}} </span>
+                    </h3>
+                    <h5 [ngClass]="order.status + ' badge text-white p-1'">{{order.status}}</h5>
+                    <a (click)="cancelOrder(order._id!)" type="button"
+                        class="badge btn mb-3 btn-small bg-danger text-center text-white p-2">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>

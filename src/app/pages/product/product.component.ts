@@ -18,11 +18,9 @@ export class ProductComponent {
   product!: ProductDto;
   productQuantity: number = 1;
   productId!: string;
-  productPrice!: number;
   IsFetchingProduct!: boolean;
   error!: string;
   message!: string;
-  totalAmountOfProduct!: number;
   user!: UserDto | undefined;
 
   constructor(
@@ -53,8 +51,6 @@ export class ProductComponent {
         if (response.statusCode == HttpStatusCode.Ok) {
           this.IsFetchingProduct = false;
           this.product = response.data;
-          this.productPrice = response.data.price;
-          this.totalAmountOfProduct = this.productPrice *= this.productQuantity;
         }
       },
       error: (err) => {
@@ -64,18 +60,18 @@ export class ProductComponent {
     });
   }
 
-  handleQuantityIncreaseORDecrease(action: string): void {
-    if (action === 'increment' && this.product != undefined) {
-      this.productQuantity += 1;
-    } else if (action === 'decrement' && this.product != undefined) {
-      this.productQuantity > 1
-        ? (this.productQuantity = this.productQuantity - 1)
-        : (this.productQuantity = this.productQuantity);
-    }
+  get totalPrice(): number {
+    return this.product.price * this.productQuantity;
   }
 
-  checkFullPrice(): void {
-    this.totalAmountOfProduct = this.productPrice *= this.productQuantity;
+  handleQuantityIncreaseORDecrease(action: string): void {
+    if (action === 'increment' && this.product != undefined) {
+      if (this.productQuantity) this.productQuantity += 1;
+    } else if (action === 'decrement' && this.product != undefined) {
+      if (this.productQuantity > 1) {
+        this.productQuantity -= 1;
+      }
+    }
   }
 
   addItemToCart(): void {
@@ -95,9 +91,11 @@ export class ProductComponent {
       product: {
         productId: this.product._id,
         title: this.product.title,
-        price: this.product.price,
+        price: this.totalPrice,
         img: this.product.img,
         desc: this.product.desc,
+        categories: this.product.categories,
+        InStock: this.product.InStock,
       },
     };
     this.cartService.add(cartDto).subscribe({

@@ -1,5 +1,15 @@
 @import url("../products/products.component.css");
 
+.accepted {
+  background-color: #008080;
+}
+.pending {
+  background-color: #808080;
+}
+.rejected {
+  background-color: red;
+}
+
 @media (max-width: 768px) {
 }
 

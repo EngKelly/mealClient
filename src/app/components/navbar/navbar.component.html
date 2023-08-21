@@ -5,7 +5,6 @@
                 <div class="img">
                     <img src="../../../assets/images/logo.png" alt="logo" />
                 </div>
-                <h1 class="logo_text">Meals</h1>
             </a>
         </div>
 
@@ -25,7 +24,7 @@
 
                     </a>
                     <a [routerLink]="['user', user._id]" class="create_account" (click)="toggle()">
-                        Account
+                        Dashboard
                     </a>
                 </div>
                 <li>
@@ -36,15 +35,15 @@
                 </li>
                 <li>
                     <!-- <BsBasket2 class="icon i" /> -->
-                    <a routerLinkActive="" href="#menu">Menu</a>
+                    <a routerLinkActive="" routerLink="/products">Menu</a>
                 </li>
                 <li>
                     <!-- <BsCart3 class="icon i" /> -->
-                    <a routerLinkActive="" href="#mytray">my-tray</a>
+                    <a routerLinkActive="" routerLink="/orders">Orders</a>
                 </li>
                 <li>
                     <!-- <BsFillJournalBookmarkFill class="icon i" /> -->
-                    <a routerLinkActive="" href="#mealplans">meal-plans</a>
+                    <a routerLinkActive="" routerLink="favorites">Favourites</a>
                 </li>
                 <li> </li>
             </ul>
@@ -89,7 +88,7 @@
 
                     </a>
                     <a [routerLink]="['user', user._id]" class="create_account" (click)="toggle()">
-                        Account
+                        Dashboard
                     </a>
                 </div>
             </ul>
