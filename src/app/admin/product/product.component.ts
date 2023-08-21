@@ -78,6 +78,7 @@ export class AddProductComponent {
           if (response.statusCode == HttpStatusCode.Ok) {
             this.UploadingProduct = false;
             this.successMessage = response.message;
+            this.foodForm.reset();
           } else {
             this.UploadingProduct = false;
             this.errorMessage =
@@ -90,7 +91,6 @@ export class AddProductComponent {
           console.log(err);
         },
       });
-      this.foodForm.reset();
     }
   }
 }

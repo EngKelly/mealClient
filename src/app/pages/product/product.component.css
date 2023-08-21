@@ -2,15 +2,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
-.productLeft {
-  flex: 1;
+.productLeft,
+.productRight {
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  height: 100vh;
+  height: 80vh;
 }
 
 .productContainer {
@@ -58,8 +59,8 @@
   margin: 0 1.3rem;
   border: none;
   outline: none;
-  width: 3rem;
-  height: 2.5rem;
+  width: 1.5rem;
+  height: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -70,16 +71,11 @@
   cursor: pointer;
 }
 
-.productRight {
-  flex: 1;
-}
-
-.productLeft .details form,
-form button {
+.productLeft .details button {
   border: none;
   outline: none;
-  width: 6rem;
-  height: 2.5rem;
+  width: 3rem;
+  height: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -90,9 +86,13 @@ form button {
   cursor: pointer;
 }
 
-form .add-to-cart {
-  width: 100%;
-  height: 95%;
+.details .button:nth-child(1) button {
+  padding-bottom: 0.4rem;
+}
+
+.add-to-cart {
+  width: 2rem;
+  height: 1rem;
   fill: var(--white_color);
 }
 
@@ -113,9 +113,33 @@ form .add-to-cart {
   align-items: center;
   justify-content: center;
   text-align: center;
-  border-radius: 10px;
+  border-radius: 5px;
+  color: var(--white_color);
 }
 
-.cartQuantity .quantityPadding {
-  padding: 0.2rem 1rem;
+.quantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 1rem;
+  border: 1px solid gray;
+  border-radius: 3px;
+}
+@media (max-width: 768px) {
+}
+
+@media (max-width: 600px) {
+  .productLeft,
+  .productRight {
+    width: 100%;
+    margin-top: 3rem;
+  }
+  .productRight {
+    height: 40vh;
+  }
+  .productContainer {
+    width: 85%;
+    height: 30rem;
+  }
 }

@@ -8,4 +8,8 @@ export interface ProductCartDto {
   img: string;
 
   desc: string;
+
+  categories: string[];
+
+  InStock: boolean;
 }

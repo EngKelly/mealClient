@@ -30,7 +30,6 @@ export class NavbarComponent {
   @HostListener('window:resize', ['$event'])
   onWindowResize(event: Event) {
     this.handleWindowResize();
-    console.log(this.IsMobile);
   }
 
   handleWindowResize() {
@@ -57,7 +56,6 @@ export class NavbarComponent {
       error: (err) => {
         this.IsLoggedIn = false;
         this.user = null;
-        console.log('Error getting the current logged in user');
       },
     });
   }

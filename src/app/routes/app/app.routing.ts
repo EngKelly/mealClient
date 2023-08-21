@@ -11,25 +11,31 @@ import { UserComponent } from '../../pages/user/user.component';
 import { CartComponent } from '../../pages/cart/cart.component';
 import { BlogComponent } from '../../pages/blog/blog.component';
 import { BlogDetailComponent } from '../../components/blog-detail/blog-detail.component';
+import { OrderComponent } from 'src/app/pages/order/order.component';
 
 export const routes: Routes = [
   { path: '', component: IndexComponent, title: 'Home' },
   { path: 'home', component: IndexComponent, title: 'Home' },
   { path: 'user/:userId', component: UserComponent },
   { path: 'products', component: ProductsComponent, title: 'Products' },
-  { path: 'product/:productId', component: ProductComponent },
+  { path: 'product/:productId', component: ProductComponent, title: 'Product' },
   {
     path: 'carts',
     canActivate: [authGuard],
     component: CartComponent,
     title: 'Carts',
   },
-  { path: 'cart/:id', component: CartComponent },
   {
     path: 'login',
     component: LoginComponent,
     title: 'Login',
     canActivate: [navigationGuard],
+  },
+  {
+    path: 'orders',
+    component: OrderComponent,
+    title: 'Orders',
+    canActivate: [authGuard],
   },
   {
     path: 'sign-up',

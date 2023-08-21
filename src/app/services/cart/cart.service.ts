@@ -17,7 +17,7 @@ export class CartService {
     return this.http.post<HttpResponse<CartDto>>(url, model);
   }
 
-  fetchCartItemsAsync(
+  fetchCartItems(
     keyword: string = '',
     page: number = 1,
     pageSize: number = 1,
@@ -25,5 +25,10 @@ export class CartService {
   ): Observable<HttpResponse<CartDto[]>> {
     const url: string = `${environment.apiUrl}/cart/${userId}?keyword=${keyword}&page=${page}&pageSize=${pageSize}`;
     return this.http.get<HttpResponse<CartDto[]>>(url);
+  }
+
+  deleteCartItem(id: string): Observable<HttpResponse> {
+    const url: string = `${environment.apiUrl}/cart/${id}`;
+    return this.http.delete<HttpResponse>(url);
   }
 }
